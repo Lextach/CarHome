@@ -1,0 +1,55 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title CarHome - Ваш автосалон
+    link(rel="stylesheet" href="/css/index.css")
+  body
+    include header
+    
+    section(id="home" class="slider")
+      .slider-content
+        h2.highlighted Ласкаво просимо до CarHome!
+        p.highlighted Великий вибір автомобілів на будь-який смак.
+        a.btn(href="/catalog") Переглянути каталог
+    
+    section(id="about" class="about")
+      .container.about-flex
+        .about-text
+          h2 Про нас
+          p
+            strong CarHome – це провідний автосалон, який пропонує широкий вибір нових та вживаних автомобілів.
+            | Наші клієнти отримують найкращі умови на ринку: якість, доступні ціни та професійне обслуговування.
+          p
+            | Ми працюємо з відомими світовими брендами та гарантуємо повний сервіс для кожного автомобіля.
+            | Завітайте до нашого автосалону та відчуйте найвищий рівень обслуговування.
+          a.btn(href="/car-filter") Дізнатися більше
+        .about-image
+          img(src="/jpg/showroom.png" alt="Автосалон CarHome")
+
+    
+    section(id="contacts" class="contacts")
+      .container
+        h2 Наші контакти
+        .contacts-info
+          .contact-item
+            img(src="/jpg/phone-icon.png" alt="Телефон" width="50")
+            p
+              strong Телефон:
+              | +380 (67) 123-45-67
+          .contact-item
+            img(src="/jpg/email-icon.png" alt="Email" width="50")
+            p
+              strong Email:
+              | info@carhome.ua
+          .contact-item
+            img(src="/jpg/location-icon.png" alt="Адреса" width="50")
+            p
+              strong Адреса:
+              | Київ, вул. Центральна, 12
+    
+    //- Підвал
+    footer
+      .container
+        p &copy; 2024 CarHome. Всі права захищено.

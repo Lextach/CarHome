@@ -1,0 +1,21 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    title Вхід
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    section.auth-form
+      h2 Вхід
+      form#loginForm(action="/login" method="POST")
+        label(for="email") Електронна пошта:
+        input(type="email" id="email" name="email" required)
+        
+        label(for="password") Пароль:
+        input(type="password" id="password" name="password" required)
+        
+        button(type="submit") Увійти
+        
+      .register-link
+        p Ще не зареєстровані? 
+          a(href="/register") Зареєструватися

@@ -1,0 +1,24 @@
+doctype html
+html(lang="uk")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title #{car.brand_name} #{car.model_name}
+        link(rel="stylesheet", href="/css/car-details.css")
+    body
+        include header
+        .car-details
+            img(src=car.photo, alt="Фото автомобіля")
+            h1 #{car.brand_name} #{car.model_name}
+            h2 Рік випуску: #{car.release_year}
+            p Колір: #{car.color_name}
+            p Тип кузова: #{car.body_type}
+            p Тип двигуна: #{car.engine_type}
+            p Привід: #{car.drive_type}
+            p Статус: #{car.status}
+            h2 Ціна: $#{car.price}
+            if user
+                a(href=`/test-drive?car_id=${car.id}`, class="test-drive-button") Записатися на тест-драйв
+            else
+                a(href="/login", class="test-drive-button") Увійти, щоб записатися на тест-драйв
+            a(href="/", class="back-button") Повернутися до каталогу

@@ -1,0 +1,25 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    title Реєстрація
+    link(rel="stylesheet" href="/css/register.css")
+  body
+
+    section.auth-form
+      h2 Реєстрація
+      form(action="/register" method="POST")
+          label(for="full_name") ПІБ:
+          input(type="text" id="full_name" name="full_name" required)
+
+          label(for="phone") Телефон:
+          input(type="text" id="phone" name="phone" required)
+
+          label(for="email") Email:
+          input(type="email" id="email" name="email" required)
+
+          label(for="password") Пароль:
+          input(type="password" id="password" name="password" required)
+
+          button(type="submit") Зареєструватися
+

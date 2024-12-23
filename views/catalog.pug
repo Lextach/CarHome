@@ -1,0 +1,20 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Каталог автомобілів
+    link(rel="stylesheet", href="/css/catalog.css")
+
+  body
+    include header
+    h1 Каталог автомобілів
+    .car-container
+      each car in cars
+        .car-card
+          a(href=`/car/${car.id}`)
+            img(src=car.photo, alt="Фото автомобіля")
+            h3= `${car.brand_name} ${car.model_name}`
+            p Рік випуску: #{car.release_year}
+            p Колір: #{car.color_name}
+            p.price Ціна: $#{car.price}

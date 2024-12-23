@@ -1,0 +1,75 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Редагувати автомобіль
+    link(rel="stylesheet" href="/css/add-car.css")
+  body
+    .form-container
+      h2 Редагувати автомобіль
+      form(action="/edit-car" method="POST")
+        input(type="hidden" name="id" value=car.id)
+        
+        .input-group
+          label(for="brand") Марка:
+          select(id="brand" name="brand_name" required)
+            each brand in brands || []
+              each brand in brands || []
+                option(value=brand selected=(brand === car.brand_name) ? "selected" : "")= brand
+
+
+        .input-group
+          label(for="model") Модель:
+          select(id="model" name="model_name" required)
+            each model in models || []
+              option(value=model selected=(model === car.model_name) ? "selected" : "")= model
+
+        .input-group
+          label(for="body_type_id") Тип кузова:
+          select(id="body_type_id" name="body_type_id" required)
+            each body_type in body_types || []
+              option(value=body_type.id selected=(body_type.id === car.body_type_id) ? "selected" : "")= body_type.name
+
+        .input-group
+          label(for="engine_type_id") Тип двигуна:
+          select(id="engine_type_id" name="engine_type_id" required)
+            each engine_type in engine_types || []
+              option(value=engine_type.id selected=(engine_type.id === car.engine_type_id) ? "selected" : "")= engine_type.name
+
+        .input-group
+          label(for="drive_type_id") Тип приводу:
+          select(id="drive_type_id" name="drive_type_id" required)
+            each drive_type in drive_types || []
+              option(value=drive_type.id selected=(drive_type.id === car.drive_type_id) ? "selected" : "")= drive_type.name
+
+        .input-group
+          label(for="engine_volume") Об'єм двигуна:
+          input(type="number" step="0.1" id="engine_volume" name="engine_volume" value=car.engine_volume required)
+
+        .input-group
+          label(for="photo") Фото (URL):
+          input(type="url" id="photo" name="photo" value=car.photo required)
+
+        .input-group
+          label(for="release_year") Рік випуску:
+          input(type="number" id="release_year" name="release_year" value=car.release_year required)
+
+        .input-group
+          label(for="price") Ціна:
+          input(type="number" id="price" name="price" value=car.price required)
+
+        .input-group
+          label(for="color") Колір:
+          select(id="color" name="color_name" required)
+            each color in colors || []
+              option(value=color selected=(color === car.color_name) ? "selected" : "")= color
+
+        .input-group
+          label(for="status") Статус:
+          select(id="status" name="status")
+            option(value="available" selected=(car.status === 'available') ? 'selected' : '') Доступний
+            option(value="on_order" selected=(car.status === 'on_order') ? 'selected' : '') Замовлено
+            option(value="sold" selected=(car.status === 'sold') ? 'selected' : '') Проданий
+
+        button(type="submit") Зберегти зміни

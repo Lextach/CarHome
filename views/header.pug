@@ -1,0 +1,15 @@
+link(rel="stylesheet" href="/css/header.css")
+header
+    .logo CarHome
+    nav
+        ul
+            li: a(href="/") Головна
+            li: a(href="/catalog") Каталог автомобілів
+            li: a(href="/car-filter") Пошук з фільтрацією
+            li: a(href="/test-drive") Запис на тест-драйв
+            if isAdmin
+                li: a(href="/admin-panel") Адмін панель
+
+            li
+                a(href="/account")
+                    img(src="/jpg/user-icon.png" alt="Особистий кабінет" width="40")

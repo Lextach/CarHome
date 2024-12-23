@@ -1,0 +1,90 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Адмін-панель
+    link(rel="stylesheet" href="/css/admin-panel.css")
+  body
+    include header 
+    .admin-container
+      nav.admin-nav
+        ul
+          li(class=(section === 'cars' ? 'active' : '')): a(href="/admin-panel/cars") Автомобілі
+          li(class=(section === 'users' ? 'active' : '')): a(href="/admin-panel/users") Користувачі
+          li(class=(section === 'test-drives' ? 'active' : '')): a(href="/admin-panel/test-drives") Тест-драйви
+
+
+      .content-container
+        if section === 'cars'
+          h2 Автомобілі
+          .button-container
+            a(href='/add-car', class="add-car-button") Додати автомобіль
+          table
+            thead
+              tr
+                th ID
+                th Марка
+                th Модель
+                th Рік випуску
+                th Ціна
+                th Колір
+                th Статус
+                th Дії
+            tbody
+              each car in items
+                tr
+                  td #{car.id}
+                  td #{car.brand_name}
+                  td #{car.model_name}
+                  td #{car.release_year}
+                  td #{car.price} $
+                  td #{car.color_name}
+                  td #{car.status}
+                  td
+                    button.action-button.edit(onclick=`location.href='/edit-car/${car.id}'`) Редагувати
+                    button.action-button.delete(onclick=`location.href='/delete-car/${car.id}'`) Видалити
+
+        if section === 'users'
+          h2 Користувачі
+          .button-container
+            button.add-button(onclick="location.href='/add-user'") Додати користувача
+          table
+            thead
+              tr
+                th ID
+                th Ім'я
+                th Email
+                th Роль
+                th Дії
+            tbody
+              each user in items
+                tr
+                  td #{user.id}
+                  td #{user.full_name}
+                  td #{user.email}
+                  td #{user.role}
+                  td
+                    button.action-button.edit(onclick=`location.href='/edit-user/${user.id}'`) Редагувати
+                    button.action-button.delete(onclick=`location.href='/delete-user/${user.id}'`) Видалити
+
+        if section === 'test-drives'
+          h2 Тест-драйви
+          table
+            thead
+              tr
+                th ID
+                th Автомобіль
+                th Користувач
+                th Дата
+                th Дії
+            tbody
+              each testDrive in items
+                tr
+                  td #{testDrive.id}
+                  td #{testDrive.car_name}
+                  td #{testDrive.user_name}
+                  td #{testDrive.date}
+                  td  
+                    button.action-button.edit(onclick=`location.href='/edit-test-drive/${testDrive.id}'`) Редагувати
+                    button.action-button.delete(onclick=`location.href='/delete-test-drive/${testDrive.id}'`) Видалити

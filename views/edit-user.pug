@@ -1,0 +1,24 @@
+doctype html
+html(lang="uk")
+  head
+    title Редагувати користувача
+    link(rel="stylesheet", href="/css/edit-user.css")
+  body
+    .form-container
+      h2 Редагувати користувача
+      form(action="/edit-user/" + user.id method="POST")
+        label(for="email") Email:
+        input(type="email" name="email" id="email" value=user.email required)
+
+        label(for="full_name") ПІБ:
+        input(type="text" name="full_name" id="full_name" value=user.full_name required)
+
+        label(for="phone") Телефон:
+        input(type="tel" name="phone" id="phone" value=user.phone required)
+
+        label(for="role") Роль:
+        select(name="role" id="role" required)
+          option(value="user" selected=(user.role === 'user')) Користувач
+          option(value="admin" selected=(user.role === 'admin')) Адміністратор
+
+        button(type="submit") Зберегти зміни

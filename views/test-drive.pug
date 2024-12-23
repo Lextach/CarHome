@@ -1,0 +1,24 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/css/test-drive.css")
+    title Тест-драйв
+  body
+    section.test-drive-form
+        h2 Запис на тест-драйв
+        if user
+            form(action="/test-drive" method="POST")
+                label(for="car") Виберіть автомобіль:
+                select(id="car" name="car_id" required)
+                    each car in cars
+                        option(value=car.id) #{car.brand_name} #{car.model_name}
+
+                label(for="date") Дата тест-драйву:
+                input(type="date" id="date" name="date" required)
+
+                button(type="submit") Записатися
+        else
+            p Ви повинні увійти, щоб записатися на тест-драйв.
+            a.button(href="/login") Увійти

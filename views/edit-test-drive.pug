@@ -1,0 +1,25 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Редагувати тест-драйв
+    link(rel="stylesheet" href="/css/edit-test-drive.css")
+  body
+    .form-container
+      h2 Редагувати тест-драйв
+      form(action="/edit-test-drive/" + testDrive.id method="POST")
+        label(for="car_name") Автомобіль:
+        select(name="car_name" id="car_name" required)
+          each car in cars
+            option(value=car.name selected=(car.name === testDrive.car_name))= car.name
+
+        label(for="user_name") Користувач:
+        select(name="user_name" id="user_name" required)
+          each user in users
+            option(value=user.full_name selected=(user.full_name === testDrive.user_name))= user.full_name
+
+        label(for="date") Дата:
+        input(type="date" name="date" id="date" value=testDrive.date required)
+
+        button(type="submit") Зберегти зміни

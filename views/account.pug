@@ -1,0 +1,44 @@
+doctype html
+html(lang="uk")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Особистий кабінет
+    link(rel="stylesheet" href="/css/account.css")
+  body
+    include header
+    h1 Ваш особистий кабінет
+    .container
+      p Вітаємо, #{user.full_name}
+
+      form#user-form(method="POST" action="/update-user")
+        label(for="name") Ім'я:
+        input#name(type="text" name="name" placeholder="Введіть ваше ім'я" value=user.full_name required)
+
+        label(for="phone") Телефон:
+        input#phone(type="tel" name="phone" placeholder="Введіть ваш телефон" value=user.phone required)
+
+        input(type="submit" value="Оновити інформацію")
+
+      a(href="/logout" class="logout-button") Вийти
+
+      h2 Ваші тест-драйви
+      - if (testDrives.length > 0)
+        table
+          thead
+            tr
+              th Машина
+              th Дата
+              th Дії
+          tbody
+            each testDrive in testDrives
+              tr
+                td #{testDrive.brand_name} #{testDrive.model_name}
+                td #{testDrive.date.toLocaleDateString('uk-UA')}
+                td
+                  form(action="/cancel-test-drive" method="POST")
+                    input(type="hidden" name="testDriveId" value=testDrive.id)
+                    button(type="submit") Скасувати
+      - else
+        p У вас немає запланованих тест-драйвів.
+

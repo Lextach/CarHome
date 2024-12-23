@@ -1,0 +1,70 @@
+doctype html
+html(lang="uk")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Пошук автомобілів
+        link(rel="stylesheet" href="/css/car-filter.css")
+        script.
+            function toggleFilters() {
+                const filterSection = document.querySelector('.filter-section');
+                if (filterSection.style.display === 'none' || filterSection.style.display === '') {
+                    filterSection.style.display = 'block';
+                } else {
+                    filterSection.style.display = 'none';
+                }
+            }
+    body
+        include header
+        h2 Пошук автомобілів
+
+        form(action="/car-filter" method="POST")
+            .search-bar
+                input(type="text" name="brand" id="brand" placeholder="Введіть марку або модель автомобіля...")
+                button(type="submit") Пошук
+        
+        .filter-toggle
+            button(type="button" onclick="toggleFilters()") Фільтрувати
+        
+        .filter-section(style="display: none;")
+            form(action="/car-filter" method="POST")
+                label(for="color") Колір:
+                select(name="color" id="color")
+                    option(value="") Виберіть колір
+                    option(value="Чорний") Чорний
+                    option(value="Білий") Білий
+                    option(value="Червоний") Червоний
+                    option(value="Синій") Синій
+                    option(value="Сірий") Сірий
+
+                label(for="body_type") Тип кузова:
+                select(name="body_type" id="body_type")
+                    option(value="") Виберіть тип кузова
+                    option(value="Седан") Седан
+                    option(value="Хетчбек") Хетчбек
+                    option(value="Позашляховик") Позашляховик
+                    option(value="Універсал") Універсал
+                    option(value="Купе") Купе
+
+                label(for="engine_type") Тип двигуна:
+                select(name="engine_type" id="engine_type")
+                    option(value="") Виберіть тип двигуна
+                    option(value="Бензин") Бензин
+                    option(value="Дизель") Дизель
+                    option(value="Електро") Електро
+                    option(value="Гібрид") Гібрид
+                label(for="drive_type") Привід:
+                select(id="drive_type" name="drive_type")
+                    option(value="") Виберіть тип приводу
+                    option(value="Передній") Передній
+                    option(value="Задній") Задній
+                    option(value="Повний") Повний
+
+                label(for="year") Рік випуску:
+                input(type="number" id="year" name="year")
+
+                label(for="price") Ціна до:
+                input(type="number" id="price" name="price")
+
+
+                button(type="submit") Фільтрувати

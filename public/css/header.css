@@ -1,0 +1,51 @@
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff !important; 
+    text-decoration: none;
+    margin-left: 20px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+nav li {
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+}
+nav a {
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+nav a:hover {
+    background: #007BFF;
+}
+
+/* Іконка акаунта */
+nav a img {
+    vertical-align: middle;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    background-color: #fff; /* Білий фон для іконки */
+    padding: 5px; /* Додає трохи відступу навколо іконки для створення видимого білого фону */
+}
+
+nav a img:hover {
+    transform: scale(1.1);
+}

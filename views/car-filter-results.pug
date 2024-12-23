@@ -1,0 +1,72 @@
+doctype html
+html(lang="uk")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Результати фільтрації
+        style.
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background: #f4f4f9;
+            }
+            h2 {
+                text-align: center;
+                color: #333;
+            }
+            .car-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            .car-card {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background: #fff;
+                width: 300px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                cursor: pointer;
+                transition: transform 0.2s ease;
+            }
+            .car-card:hover {
+                transform: scale(1.05);
+            }
+            .car-card img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+            .car-card h3 {
+                font-size: 1.2em;
+                margin: 10px 0;
+                color: #222;
+            }
+            .car-card p {
+                font-size: 0.9em;
+                margin: 5px 0;
+                color: #555;
+            }
+            .no-results {
+                text-align: center;
+                color: #777;
+                margin-top: 20px;
+            }
+    body
+        include header
+        h2 Результати фільтрації
+        .car-list
+            if cars.length === 0
+                p.no-results На жаль, за вашими критеріями нічого не знайдено.
+            else
+                each car in cars
+                    a(href=`/car/${car.id}`) 
+                        .car-card
+                            img(src=car.photo, alt=car.model_name)
+                            h3= car.brand_name + ' ' + car.model_name + ' (' + car.release_year + ')'
+                            p Колір: #{car.color_name}
+                            p Ціна: $#{car.price}
+                            p Статус: #{car.status}
